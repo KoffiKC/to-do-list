@@ -6,6 +6,7 @@ function readyNow() {
     console.log('JQ');
     getTasks()
     $('#add-task').on('click', addTask)
+    $('#eraser').on('click', clearAll)
     $('#note-pad').on('click', '.check-off', checkTask)
     $('#note-pad').on('click', '.remove-task', removeTask)
 }
@@ -93,9 +94,24 @@ function removeTask() {
         console.log('they gone!');
         getTasks() // call a GET request to refresh the DOM 
     }).catch(err => {
-        console.log('worse than papercut', err);
+        console.log('worse than papercuts', err);
     })
-}  
+} 
+
+
+function clearAll() {
+    console.log('DIEDIEDIEDIE');
+    
+    $.ajax({ //send delete request
+        method: 'DELETE',
+        url: `/todo`
+    }).then(response => {
+        console.log('they all gone!');
+        getTasks() // call a GET request to refresh the DOM 
+    }).catch(err => {
+        console.log('worse than a 1000 papercuts', err);
+    })
+}
 
 function completeStatus(status) {
     // console.log('haaaaa');

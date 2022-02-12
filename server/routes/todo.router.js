@@ -49,7 +49,7 @@ router.put('/:id', (req, res) => {
           console.log('ey ded et');
           res.sendStatus(200)
       }).catch((err) => {
-          console.log('we\'ve still got work do to!', queryText, err);
+          console.log('we\'ve still got work do to', queryText, err);
           res.sendStatus(500)
       });
   });
@@ -70,6 +70,19 @@ router.delete('/:id', (req, res) => {
           res.sendStatus(500)
       });
   });
+  
+  router.delete('/', (req, res) => {
 
+      let queryText = 'DELETE FROM "toDo";'
+    
+      pool.query(queryText)
+        .then((result) => {
+            console.log('im so done with AAAALL this');
+            res.sendStatus(200)
+        }).catch((err) => {
+            console.log('a full day of chores again?!?', queryText, err);
+            res.sendStatus(500)
+        });
+    });
 // allows for this route to be used
 module.exports = router;
