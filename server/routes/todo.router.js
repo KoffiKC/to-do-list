@@ -46,10 +46,10 @@ router.put('/:id', (req, res) => {
   
     pool.query(queryText, [newCompleteStatus, taskId])
       .then((result) => {
-          console.log('im so done with this');
+          console.log('ey ded et');
           res.sendStatus(200)
       }).catch((err) => {
-          console.log('does this still need to be done', queryText, err);
+          console.log('we\'ve still got work do to!', queryText, err);
           res.sendStatus(500)
       });
   });

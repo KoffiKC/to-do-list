@@ -32,7 +32,7 @@ function renderTasks(taskArr) {
         <div class="note-pad-item" data-id=${task.id}>
             <button class="check-off">check off list</button>
             <p>${task.task}</p>
-            <button class="remove-task">remove task</button>
+            <button class="remove-task" data-complete=${task.complete}>remove task</button>
         </div>
         `)
     }
@@ -60,12 +60,29 @@ function addTask() {
 function checkTask() {
     console.log('donzo!');
     
+    let id = $(this).closest('div').data('id'); // wrap id from button clicked(this) inside of variable
+    let complete = $(this).closest('div').children('.remove-task').data('complete');
+    console.log(id, complete); 
+
+    $.ajax({
+        method: 'PUT',
+        url: `/todo/${id}`,
+        data:{
+            complete: !complete
+        }
+    }).then((response) => {
+        console.log(response);
+        getTasks();
+    }).catch(err => {
+        console.log(err);
+        
+    })
 }
 
 function removeTask() {
     console.log('gonzo!');
     
-    let id = $(this).closest('div').data().id; // wrap table id from button clicked(this) inside of variable
+    let id = $(this).closest('div').data('id'); // wrap id from button clicked(this) inside of variable
     console.log(id); 
     
     $.ajax({ //send delete request
