@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('server/public'));
 
 // ROUTES
-// app.use('/todo', router)
+app.use('/todo', router)
 
 // starts listening for requests on port
 app.listen(PORT, () => {
