@@ -19,6 +19,23 @@ router.get('/',(req,res)=>{
 })
 
 // POST
+router.post('/', (req, res) => {
+    let task = req.body.task
+    console.log(task);
+    
+
+    let sqlCmd = `
+    INSERT INTO "toDo" ("task")
+    VALUES ($1);`
+    
+    pool.query(sqlCmd, [task])
+        .then(results => {
+            res.sendStatus(201)
+        }).catch(err => {
+            console.log('task deemed too lame to post', err);
+            res.sendStatus(500)
+        })
+})
 
 
 // PUT
