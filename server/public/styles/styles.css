@@ -1,4 +1,8 @@
-#note-pad {
+.note-pad-item {
     display: flex;
     flex-direction: row;
+}
+
+#note-pad {
+    background-color: rebeccapurple;
 }
