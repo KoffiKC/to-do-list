@@ -1,0 +1,4 @@
+#note-pad {
+    display: flex;
+    flex-direction: row;
+}
