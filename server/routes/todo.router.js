@@ -66,7 +66,7 @@ router.delete('/:id', (req, res) => {
           console.log('im so done with this');
           res.sendStatus(200)
       }).catch((err) => {
-          console.log('does this still need to be done', queryText, err);
+          console.log('does this still need to be done?', queryText, err);
           res.sendStatus(500)
       });
   });

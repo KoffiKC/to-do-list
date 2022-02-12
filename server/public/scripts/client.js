@@ -6,6 +6,8 @@ function readyNow() {
     console.log('JQ');
     getTasks()
     $('#add-task').on('click', addTask)
+    $('#note-pad').on('click', '.check-off', checkTask)
+    $('#note-pad').on('click', '.remove-task', removeTask)
 }
 
 function getTasks() {
@@ -54,4 +56,27 @@ function addTask() {
         alert("error adding task")
        })
 }
+
+function checkTask() {
+    console.log('donzo!');
+    
+}
+
+function removeTask() {
+    console.log('gonzo!');
+    
+    let id = $(this).closest('div').data().id; // wrap table id from button clicked(this) inside of variable
+    console.log(id); 
+    
+    $.ajax({ //send delete request
+        method: 'DELETE',
+        url: `/todo/${id}`
+    }).then(response => {
+        console.log('they gone!');
+        getTasks() // call a GET request to refresh the DOM 
+    }).catch(err => {
+        console.log('worse than papercut', err);
+    })
+}  
+
 
