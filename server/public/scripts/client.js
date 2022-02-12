@@ -28,10 +28,11 @@ function renderTasks(taskArr) {
     $('#note-pad').empty()
 
     for (let task of taskArr) {
+
         $('#note-pad').append(`
         <div class="note-pad-item" data-id=${task.id}>
             <button class="check-off">check off list</button>
-            <p>${task.task}</p>
+            <p class="${completeStatus(task.complete)}">${task.task}</p>
             <button class="remove-task" data-complete=${task.complete}>remove task</button>
         </div>
         `)
@@ -96,4 +97,17 @@ function removeTask() {
     })
 }  
 
+function completeStatus(status) {
+    // console.log('haaaaa');
+    // let ha = 'haaaaaaaa'
+    // return ha;
+    let color = 'to-be-done'
 
+    if(status){
+        color = 'done'
+    } else if (status == false){
+        color = 'to-be-done'
+    }
+
+    return color;
+}

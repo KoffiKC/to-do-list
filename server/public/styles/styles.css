@@ -6,3 +6,11 @@
 #note-pad {
     background-color: rebeccapurple;
 }
+
+.to-be-done { 
+    color: red;
+}
+
+.done { 
+    color: purple;
+}
