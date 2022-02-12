@@ -52,6 +52,7 @@ function addTask() {
         }
        }).then(function(response){
          console.log(response);
+         $('#task-in').val('');
          getTasks();
        }).catch(function(error) {
          console.log('error in todo POST', error );
